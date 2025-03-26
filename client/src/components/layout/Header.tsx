@@ -161,9 +161,10 @@ const Header = () => {
                     onClick={(e) => handleNavigation(e, link.path, link.external)}
                     className={`font-medium ${
                       isActive(link.path) ? "text-primary" : "text-white hover:text-primary"
-                    } transition-colors duration-200 py-2 block`}
+                    } transition-colors duration-200 py-2 block flex items-center gap-1`}
                   >
                     {link.name}
+                    {link.external && <ExternalLink size={14} className="inline ml-1" />}
                   </a>
                 </motion.div>
               ))}
