@@ -3,7 +3,6 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { AlignJustify, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import companyLogo from "@/assets/virtuosity_solutions_sdn_bhd_logo.jpeg";
 
 interface NavLink {
   name: string;
@@ -87,7 +86,7 @@ const Header = () => {
         >
           <Link href="/" className="flex items-center gap-3">
             <motion.img 
-              src={companyLogo} 
+              src="https://i.ibb.co/pBLdQ4SS/vs-logo.png" 
               alt="Virtuosity Solutions Logo" 
               className="h-10 w-auto"
               initial={{ opacity: 0, scale: 0.8 }}
