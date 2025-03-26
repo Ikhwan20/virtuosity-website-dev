@@ -279,7 +279,7 @@ const ContactSection = () => {
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    +60 3 2725 8018
+                    03-5124 7818
                   </motion.a>
                 </motion.div>
                 <motion.div
@@ -296,7 +296,7 @@ const ContactSection = () => {
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    info@virtuosity.solutions
+                    sales@virtuosity-global.com
                   </motion.a>
                 </motion.div>
               </CardContent>

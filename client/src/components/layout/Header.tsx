@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { AlignJustify, X } from "lucide-react";
+import { AlignJustify, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import companyLogo from "@/assets/virtuosity_solutions_sdn_bhd_logo.jpeg";
+
+interface NavLink {
+  name: string;
+  path: string;
+  external?: boolean;
+}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,13 +23,13 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/#services" },
     { name: "Client Stories", path: "/#case-studies" },
     { name: "About Us", path: "/#about" },
     { name: "Contact", path: "/#contact" },
-    { name: "Blog", path: "/blog" }
+    { name: "Blog", path: "https://www.pivotal.my", external: true }
   ];
 
   const isActive = (path: string) => {
@@ -33,7 +39,15 @@ const Header = () => {
     return location.includes(path.replace("#", ""));
   };
   
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string, isExternal?: boolean) => {
+    // For external links, allow default behavior
+    if (isExternal) {
+      // Don't prevent default to allow browser to navigate to external URL
+      window.open(path, '_blank');
+      closeMenu();
+      return;
+    }
+    
     e.preventDefault();
     
     // For hash links, scroll to the section
@@ -96,7 +110,7 @@ const Header = () => {
             >
               <a
                 href={link.path}
-                onClick={(e) => handleNavigation(e, link.path)}
+                onClick={(e) => handleNavigation(e, link.path, link.external)}
                 className={`font-medium ${
                   isActive(link.path) ? "text-primary" : "text-white hover:text-primary"
                 } transition-colors duration-200`}
@@ -104,8 +118,10 @@ const Header = () => {
                 <motion.span 
                   whileHover={{ y: -2 }} 
                   transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-center gap-1"
                 >
                   {link.name}
+                  {link.external && <ExternalLink size={14} className="inline ml-1" />}
                 </motion.span>
               </a>
             </motion.div>
@@ -142,7 +158,7 @@ const Header = () => {
                 >
                   <a
                     href={link.path}
-                    onClick={(e) => handleNavigation(e, link.path)}
+                    onClick={(e) => handleNavigation(e, link.path, link.external)}
                     className={`font-medium ${
                       isActive(link.path) ? "text-primary" : "text-white hover:text-primary"
                     } transition-colors duration-200 py-2 block`}
