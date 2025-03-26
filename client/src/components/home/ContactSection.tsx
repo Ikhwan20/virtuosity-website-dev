@@ -59,6 +59,7 @@ const ContactSection = () => {
           <SectionHeader
             title="Would you like to be Cloud Native too?"
             description="Get in touch with our team of experts to discuss your cloud needs"
+            className="mb-10"
           />
         </motion.div>
 
