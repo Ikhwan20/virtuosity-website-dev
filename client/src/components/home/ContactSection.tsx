@@ -232,20 +232,7 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="w-full h-72"
-              >
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1141834612635!2d101.53735297487697!3d3.067926153587076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4d7c4808727d%3A0xf4ece0183b6c4cd8!2sVirtuosity%20Solutions%20Sdn.%20Bhd.!5e0!3m2!1sen!2sus!4v1709106381299!5m2!1sen!2sus" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen={false} 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Virtuosity Solutions location"
-                  className="w-full h-full border-none"
-                ></iframe>
-              </motion.div>
+              ></motion.div>
 
               <CardContent className="p-6 border-t">
                 <motion.div
@@ -279,7 +266,7 @@ const ContactSection = () => {
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    +60 3 2725 8018
+                    +03-5124 7818
                   </motion.a>
                 </motion.div>
                 <motion.div
