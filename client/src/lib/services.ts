@@ -63,9 +63,5 @@ export const services: Service[] = [
       "Workflow automation with AI"
     ],
     technologies: ["ReN3.ai", "OpenAI", "DeepSeek", "Claude", "Mistral", "Llama"],
-    extraLink: {
-      text: "Watch ReN3.ai Demo Videos",
-      url: "#"
-    }
   }
 ];

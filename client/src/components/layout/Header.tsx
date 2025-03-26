@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { AlignJustify, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import companyLogo from "@/assets/virtuosity_solutions_sdn_bhd_logo.jpeg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,8 +46,18 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <Link href="/" className="font-montserrat text-2xl font-bold text-primary">
-            Virtuosity Solutions
+          <Link href="/" className="flex items-center gap-3">
+            <motion.img 
+              src={companyLogo} 
+              alt="Virtuosity Solutions Logo" 
+              className="h-10 w-auto"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            />
+            <span className="font-montserrat text-2xl font-bold text-primary">
+              Virtuosity Solutions
+            </span>
           </Link>
         </motion.div>
         

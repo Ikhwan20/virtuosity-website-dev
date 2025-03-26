@@ -67,7 +67,7 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
           >
             <Button
               variant="ghost"
-              className="text-secondary hover:text-primary flex items-center font-medium p-0"
+              className="text-primary hover:text-primary/80 flex items-center font-medium p-0"
               onClick={toggleDetails}
             >
               {isExpanded ? "Show Less" : "Learn More"} 
@@ -134,7 +134,7 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
                   >
                     <motion.a 
                       href={service.extraLink.url} 
-                      className="text-secondary hover:text-primary font-medium inline-block"
+                      className="text-primary hover:text-primary/80 font-medium inline-block"
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
