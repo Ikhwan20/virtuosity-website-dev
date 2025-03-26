@@ -3,11 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary: 354 100% 39%;     /* #C5000D */
+    --secondary: 0 0% 10%;       /* #1A1A1A */
+    --background: 0 0% 100%;     /* #FFFFFF */
+  }
+  
   * {
     @apply border-border;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  .bg-secondary {
+    background-color: #1A1A1A;
+    color: white;
+  }
+  
+  .text-secondary {
+    color: #1A1A1A;
   }
 }

@@ -189,7 +189,7 @@ const ContactSection = () => {
                 >
                   <Button 
                     type="submit" 
-                    className="bg-primary text-white hover:bg-primary/80 py-3 px-8 rounded-md shadow-md transition duration-300"
+                    className="bg-primary text-white hover:bg-primary/90 py-3 px-8 rounded-md shadow-md transition-all duration-300"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
@@ -228,15 +228,72 @@ const ContactSection = () => {
                 />
               </motion.div>
               <motion.div 
-                className="h-64 bg-neutral-100 flex items-center justify-center text-neutral-600"
+                className="bg-neutral-100 flex items-center justify-center text-neutral-600 p-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                Interactive Map Location
+                <div className="w-full space-y-6">
+                  <motion.div 
+                    className="flex items-start mb-5"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                    viewport={{ once: true }}
+                  >
+                    <Phone className="text-primary mt-1 mr-3 flex-shrink-0" />
+                    <div>
+                      <span className="font-semibold block mb-1">Phone:</span>
+                      <motion.a 
+                        href="tel:+60351247818"
+                        className="hover:text-primary transition-colors"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        +603 5124 7818
+                      </motion.a>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="flex items-start mb-5"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    viewport={{ once: true }}
+                  >
+                    <Mail className="text-primary mt-1 mr-3 flex-shrink-0" />
+                    <div>
+                      <span className="font-semibold block mb-1">Email:</span>
+                      <motion.a 
+                        href="mailto:sales@virtuosity-global.com"
+                        className="hover:text-primary transition-colors"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        sales@virtuosity-global.com
+                      </motion.a>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="flex items-start"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                    viewport={{ once: true }}
+                  >
+                    <MapPin className="text-primary mt-1 mr-3 flex-shrink-0" />
+                    <div>
+                      <span className="font-semibold block mb-1">Address:</span>
+                      <span className="block">Virtuosity Solutions Sdn. Bhd. 1, Jalan Taboh 33/22,</span>
+                      <span className="block">Seksyen 33, 40400 Shah Alam, Selangor, Malaysia.</span>
+                    </div>
+                  </motion.div>
+                </div>
               </motion.div>
-              <CardContent className="p-6">
+              <CardContent className="p-6 border-t">
                 <motion.div 
                   className="flex items-start mb-4"
                   initial={{ opacity: 0, x: 20 }}
@@ -244,7 +301,7 @@ const ContactSection = () => {
                   transition={{ duration: 0.5, delay: 0.7 }}
                   viewport={{ once: true }}
                 >
-                  <MapPin className="text-primary mt-1 mr-3" />
+                  <MapPin className="text-primary mt-1 mr-3 flex-shrink-0" />
                   <span>Level 15-2, Q Sentral, 2A Jalan Stesen Sentral 2, KL Sentral, 50470 Kuala Lumpur, Malaysia</span>
                 </motion.div>
                 <motion.div 
@@ -254,7 +311,7 @@ const ContactSection = () => {
                   transition={{ duration: 0.5, delay: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <Phone className="text-primary mt-1 mr-3" />
+                  <Phone className="text-primary mt-1 mr-3 flex-shrink-0" />
                   <motion.a 
                     href="tel:+60327258018"
                     className="hover:text-primary transition-colors"
@@ -271,9 +328,9 @@ const ContactSection = () => {
                   transition={{ duration: 0.5, delay: 0.9 }}
                   viewport={{ once: true }}
                 >
-                  <Mail className="text-primary mt-1 mr-3" />
+                  <Mail className="text-primary mt-1 mr-3 flex-shrink-0" />
                   <motion.a 
-                    href="mailto:info@virtuosity-global.com"
+                    href="mailto:info@virtuosity.solutions"
                     className="hover:text-primary transition-colors"
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
