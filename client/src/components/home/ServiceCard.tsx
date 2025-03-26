@@ -126,22 +126,17 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
                         whileHover={{ scale: 1.05 }}
                       >
                         <a 
-                          href={typeof tech === 'string' ? '#' : tech.url} 
+                          href={tech.url} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="inline-block"
-                          onClick={(e) => {
-                            if (typeof tech === 'string') {
-                              e.preventDefault();
-                            }
-                          }}
                         >
                           <Badge 
                             variant="outline" 
                             className="bg-white border-primary/20 text-primary hover:bg-primary/5 transition-colors duration-200 rounded-full px-3 py-1 text-sm flex items-center gap-1"
                           >
-                            {typeof tech === 'string' ? tech : tech.name}
-                            {typeof tech !== 'string' && <ExternalLink size={12} className="ml-1" />}
+                            {tech.name}
+                            <ExternalLink size={12} className="ml-1" />
                           </Badge>
                         </a>
                       </motion.div>
