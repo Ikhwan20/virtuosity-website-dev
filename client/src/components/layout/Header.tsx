@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { AlignJustify, X } from "lucide-react";
@@ -7,7 +7,7 @@ import companyLogo from "@/assets/virtuosity_solutions_sdn_bhd_logo.jpeg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,10 +32,35 @@ const Header = () => {
     }
     return location.includes(path.replace("#", ""));
   };
+  
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    
+    // For hash links, scroll to the section
+    if (path.includes('#')) {
+      const targetId = path.split('#')[1];
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 100, // Offset for header height
+          behavior: 'smooth'
+        });
+      }
+      
+      // Update location for active styling
+      setLocation(path);
+    } else {
+      // Regular navigation
+      setLocation(path);
+    }
+    
+    closeMenu();
+  };
 
   return (
     <motion.header 
-      className="sticky top-0 z-50 bg-white shadow-md"
+      className="sticky top-0 z-50 bg-secondary shadow-md"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 15 }}
@@ -69,10 +94,11 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <Link
+              <a
                 href={link.path}
+                onClick={(e) => handleNavigation(e, link.path)}
                 className={`font-medium ${
-                  isActive(link.path) ? "text-primary" : "text-neutral-800 hover:text-primary"
+                  isActive(link.path) ? "text-primary" : "text-white hover:text-primary"
                 } transition-colors duration-200`}
               >
                 <motion.span 
@@ -81,7 +107,7 @@ const Header = () => {
                 >
                   {link.name}
                 </motion.span>
-              </Link>
+              </a>
             </motion.div>
           ))}
         </nav>
@@ -89,7 +115,7 @@ const Header = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden text-white hover:text-primary"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -100,7 +126,7 @@ const Header = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="bg-white shadow-lg md:hidden absolute w-full"
+            className="bg-secondary shadow-lg md:hidden absolute w-full"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -114,15 +140,15 @@ const Header = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
-                  <Link
+                  <a
                     href={link.path}
+                    onClick={(e) => handleNavigation(e, link.path)}
                     className={`font-medium ${
-                      isActive(link.path) ? "text-primary" : "text-neutral-800 hover:text-primary"
+                      isActive(link.path) ? "text-primary" : "text-white hover:text-primary"
                     } transition-colors duration-200 py-2 block`}
-                    onClick={closeMenu}
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
             </div>
