@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-16 bg-neutral-100">
+    <section id="about" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,6 +17,7 @@ const AboutSection = () => {
           <SectionHeader
             title="About the Virtuosity Solutions Team"
             description="Our story and commitment to excellence in cloud solutions"
+            className="text-white"
           />
         </motion.div>
 
@@ -107,7 +108,7 @@ const AboutSection = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <Button 
-                    className="bg-primary text-white hover:bg-primary/80"
+                    className="bg-primary text-white hover:bg-primary/90 transition-all duration-300 shadow-lg"
                     asChild
                   >
                     <a 

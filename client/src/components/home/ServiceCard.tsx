@@ -29,7 +29,7 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
       }}
       whileHover={{ y: -5 }}
     >
-      <Card className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full">
+      <Card className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full border-t-2 border-primary">
         <CardContent className="p-6">
           <motion.h3 
             className="text-xl font-montserrat font-bold mb-3"
@@ -66,8 +66,8 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
             whileTap={{ scale: 0.95 }}
           >
             <Button
-              variant="ghost"
-              className="text-primary hover:text-primary/80 flex items-center font-medium p-0"
+              variant={isExpanded ? "ghost" : "outline"} 
+              className={`flex items-center font-medium ${isExpanded ? 'text-secondary hover:text-secondary/80 p-0' : 'text-primary hover:text-primary border-primary hover:bg-primary/10'}`}
               onClick={toggleDetails}
             >
               {isExpanded ? "Show Less" : "Learn More"} 
@@ -115,8 +115,8 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
                         transition={{ delay: i * 0.05, duration: 0.3 }}
                       >
                         <Badge 
-                          variant="secondary" 
-                          className="bg-neutral-100 rounded-full px-3 py-1 text-sm"
+                          variant="outline" 
+                          className="bg-white border-primary/20 text-primary hover:bg-primary/5 transition-colors duration-200 rounded-full px-3 py-1 text-sm"
                         >
                           {tech}
                         </Badge>

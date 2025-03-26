@@ -171,7 +171,7 @@ const ContactSection = () => {
                   transition={{ duration: 0.5, delay: 0.7 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-neutral-100 border border-gray-300 rounded-md p-4 flex items-center justify-between mb-4">
+                  <div className="bg-neutral-50 border border-primary/20 rounded-md p-4 flex items-center justify-between mb-4 shadow-sm">
                     <span className="text-neutral-600">I'm not a robot</span>
                     <div className="w-8 h-8">
                       {/* reCAPTCHA would be implemented here in production */}

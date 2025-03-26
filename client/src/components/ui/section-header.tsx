@@ -19,7 +19,7 @@ export function SectionHeader({
     >
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold mb-4">{title}</h2>
       {description && (
-        <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">{description}</p>
+        <p className={cn("text-lg md:text-xl max-w-3xl mx-auto", className?.includes("text-white") ? "text-gray-200" : "text-neutral-600")}>{description}</p>
       )}
     </div>
   );
