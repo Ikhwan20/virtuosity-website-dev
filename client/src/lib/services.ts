@@ -55,7 +55,7 @@ export const services: Service[] = [
     id: "ai",
     title: "AI Driven Business Productivity",
     description: "Jumpstart your AI journey with a Private Secure, Multi-lingual AI Assistant, with Proven Productivity Solution.",
-    image: "https://images.unsplash.com/photo-1677442140651-1c4c0ddf1ea1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    image: "/src/assets/ai-tools-logo.png",
     features: [
       "Private AI deployments",
       "Multi-lingual AI assistants",

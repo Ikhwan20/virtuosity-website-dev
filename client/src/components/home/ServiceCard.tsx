@@ -55,11 +55,21 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
           >
-            <img 
-              src={service.image} 
-              alt={service.title} 
-              className="max-w-full max-h-full object-contain"
-            />
+            {service.id === "ai" ? (
+              <div className="w-full h-full flex items-center justify-center">
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            ) : (
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                className="max-w-full max-h-full object-contain"
+              />
+            )}
           </motion.div>
           
           <motion.div
