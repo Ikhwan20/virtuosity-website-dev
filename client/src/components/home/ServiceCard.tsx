@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import { type Service } from "@/lib/services";
 import { Badge } from '@/components/ui/badge';
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ServiceCardProps {
   service: Service;
+  index?: number;
 }
 
-const ServiceCard = ({ service }: ServiceCardProps) => {
+const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleDetails = () => {
@@ -17,56 +19,135 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
   };
 
   return (
-    <Card className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-montserrat font-bold mb-3">{service.title}</h3>
-        <p className="text-neutral-600 mb-4">{service.description}</p>
-        <div className="w-full h-48 flex justify-center items-center mb-4">
-          <img 
-            src={service.image} 
-            alt={service.title} 
-            className="max-w-full max-h-full object-contain"
-          />
-        </div>
-        <Button
-          variant="ghost"
-          className="text-secondary hover:text-primary flex items-center font-medium p-0"
-          onClick={toggleDetails}
-        >
-          {isExpanded ? "Show Less" : "Learn More"} 
-          {isExpanded ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
-        </Button>
-      </CardContent>
-      
-      {isExpanded && (
-        <div className="px-6 pb-6">
-          <div className="pt-4 border-t border-gray-200">
-            <h4 className="font-montserrat font-bold mb-2">Features:</h4>
-            <ul className="list-disc pl-5 mb-4">
-              {service.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-            {service.technologies && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {service.technologies.map((tech, index) => (
-                  <Badge key={index} variant="secondary" className="bg-neutral-100 rounded-full px-3 py-1 text-sm">
-                    {tech}
-                  </Badge>
-                ))}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        ease: "easeOut"
+      }}
+      whileHover={{ y: -5 }}
+    >
+      <Card className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full">
+        <CardContent className="p-6">
+          <motion.h3 
+            className="text-xl font-montserrat font-bold mb-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
+          >
+            {service.title}
+          </motion.h3>
+          
+          <motion.p 
+            className="text-neutral-600 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
+          >
+            {service.description}
+          </motion.p>
+          
+          <motion.div 
+            className="w-full h-48 flex justify-center items-center mb-4"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+          >
+            <img 
+              src={service.image} 
+              alt={service.title} 
+              className="max-w-full max-h-full object-contain"
+            />
+          </motion.div>
+          
+          <motion.div
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button
+              variant="ghost"
+              className="text-secondary hover:text-primary flex items-center font-medium p-0"
+              onClick={toggleDetails}
+            >
+              {isExpanded ? "Show Less" : "Learn More"} 
+              <motion.div
+                animate={{ rotate: isExpanded ? 90 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isExpanded ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+              </motion.div>
+            </Button>
+          </motion.div>
+        </CardContent>
+        
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div 
+              className="px-6 pb-6"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="pt-4 border-t border-gray-200">
+                <h4 className="font-montserrat font-bold mb-2">Features:</h4>
+                <ul className="list-disc pl-5 mb-4">
+                  {service.features.map((feature, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1, duration: 0.3 }}
+                    >
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+                
+                {service.technologies && (
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {service.technologies.map((tech, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.05, duration: 0.3 }}
+                      >
+                        <Badge 
+                          variant="secondary" 
+                          className="bg-neutral-100 rounded-full px-3 py-1 text-sm"
+                        >
+                          {tech}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+                
+                {service.extraLink && (
+                  <motion.div 
+                    className="mt-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.3 }}
+                  >
+                    <motion.a 
+                      href={service.extraLink.url} 
+                      className="text-secondary hover:text-primary font-medium inline-block"
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      {service.extraLink.text} →
+                    </motion.a>
+                  </motion.div>
+                )}
               </div>
-            )}
-            {service.extraLink && (
-              <div className="mt-4">
-                <a href={service.extraLink.url} className="text-secondary hover:text-primary font-medium">
-                  {service.extraLink.text} →
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-    </Card>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Card>
+    </motion.div>
   );
 };
 
