@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, ChevronDown } from "lucide-react";
-import { type Service } from "@/lib/services";
+import { ChevronRight, ChevronDown, ExternalLink } from "lucide-react";
+import { type Service, type Technology } from "@/lib/services";
 import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -123,13 +123,27 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: i * 0.05, duration: 0.3 }}
+                        whileHover={{ scale: 1.05 }}
                       >
-                        <Badge 
-                          variant="outline" 
-                          className="bg-white border-primary/20 text-primary hover:bg-primary/5 transition-colors duration-200 rounded-full px-3 py-1 text-sm"
+                        <a 
+                          href={typeof tech === 'string' ? '#' : tech.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-block"
+                          onClick={(e) => {
+                            if (typeof tech === 'string') {
+                              e.preventDefault();
+                            }
+                          }}
                         >
-                          {tech}
-                        </Badge>
+                          <Badge 
+                            variant="outline" 
+                            className="bg-white border-primary/20 text-primary hover:bg-primary/5 transition-colors duration-200 rounded-full px-3 py-1 text-sm flex items-center gap-1"
+                          >
+                            {typeof tech === 'string' ? tech : tech.name}
+                            {typeof tech !== 'string' && <ExternalLink size={12} className="ml-1" />}
+                          </Badge>
+                        </a>
                       </motion.div>
                     ))}
                   </div>
