@@ -14,14 +14,8 @@ const Footer = () => {
               Leading cloud infrastructure and DevOps solutions provider in Malaysia and the ASEAN region. Helping businesses transform with cloud-native strategies.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
+              <a href="https://www.linkedin.com/company/virtuosity-solutions-sdn.-bhd./" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
                 <FaLinkedin size={20} />
-              </a>
-              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
-                <FaTwitter size={20} />
-              </a>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
-                <FaFacebook size={20} />
               </a>
             </div>
           </div>
