@@ -22,17 +22,9 @@ const Footer = () => {
               <h5 className="text-lg font-montserrat font-medium mb-4">Our Partners</h5>
               <div className="flex items-center space-x-6">
                 <a href="/products" className="bg-white p-2 rounded-md hover:opacity-90 transition-opacity">
-                  <img src="https://i.ibb.co/jvYLVQmq/image-2025-03-27-142713360.png" alt="Ren3 AI Logo" className="h-10 w-auto" />
+                  <img src="https://i.ibb.co/jvYLVQmq/image-2025-03-27-142713360.png" alt="Ren3 AI Logo" className="h-5 w-auto" />
                 </a>
               </div>
-            </div>
-            <div>
-              <a 
-                href="/products" 
-                className="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-md transition-colors"
-              >
-                Unlock AI-Powered Productivity Today
-              </a>
             </div>
           </div>
           

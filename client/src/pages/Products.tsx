@@ -92,19 +92,15 @@ const Products = () => {
                 size="lg"
                 variant="outline"
                 className="bg-white text-primary hover:bg-neutral-100 font-medium py-3 px-8 rounded-md shadow-lg transition duration-300 mx-10"
-                asChild
               >
-                <motion.a
-                  href="/assets/virtuosity-ai-brochure.pdf"
-                  download="Virtuosity-Gen-AI-Brochure.pdf"
+                <motion.span
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2"
                 >
-                  <span className="flex items-center gap-2">
-                    Download Brochure
-                    <ChevronRight size={16} />
-                  </span>
-                </motion.a>
+                  Download Brochure
+                  <ChevronRight size={16} />
+                </motion.span>
               </Button>
             </motion.div>
           </motion.div>
@@ -293,11 +289,6 @@ const Products = () => {
             >
               <div className="relative w-full max-w-md h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl overflow-hidden shadow-lg">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src="https://i.imghippo.com/files/oeF5911RXI.png"
-                    alt="Ren3 AI Integration"
-                    className="w-32 absolute opacity-10"
-                  />
                   <div className="z-10 text-center p-6">
                     <h3 className="text-2xl font-bold mb-4">
                       Transforming Businesses with AI
