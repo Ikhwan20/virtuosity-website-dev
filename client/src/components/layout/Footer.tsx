@@ -13,9 +13,25 @@ const Footer = () => {
             <p className="text-gray-300 mb-4">
               Leading cloud infrastructure and DevOps solutions provider in Malaysia and the ASEAN region. Helping businesses transform with cloud-native strategies.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mb-6">
               <a href="https://www.linkedin.com/company/virtuosity-solutions-sdn.-bhd./" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
                 <FaLinkedin size={30} />
+              </a>
+            </div>
+            <div className="mb-6">
+              <h5 className="text-lg font-montserrat font-medium mb-4">Our Partners</h5>
+              <div className="flex items-center space-x-6">
+                <a href="/products" className="bg-white p-2 rounded-md hover:opacity-90 transition-opacity">
+                  <img src="https://i.ibb.co/jvYLVQmq/image-2025-03-27-142713360.png" alt="Ren3 AI Logo" className="h-10 w-auto" />
+                </a>
+              </div>
+            </div>
+            <div>
+              <a 
+                href="/products" 
+                className="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              >
+                Unlock AI-Powered Productivity Today
               </a>
             </div>
           </div>
@@ -60,6 +76,11 @@ const Footer = () => {
                 </a>
               </li>
               <li>
+                <a href="/products" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Products
+                </a>
+              </li>
+              <li>
                 <a href="#case-studies" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Client Stories
                 </a>
@@ -75,7 +96,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/blog" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <a href="/blog/virtuosity-ren3-partnership" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Blog
                 </a>
               </li>
