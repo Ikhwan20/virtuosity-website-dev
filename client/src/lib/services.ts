@@ -21,7 +21,7 @@ export const services: Service[] = [
     id: "hybrid-cloud",
     title: "Hybrid Cloud Platform",
     description:
-      "With the right container orchestration tool, you can freely scale and move applications across multiple cloud platforms.",
+      "Scale applications seamlessly across multiple cloud platforms with the right container orchestration tool.",
     image:
       "https://www.virtuosity-global.com/wp-content/uploads/2022/04/sam_cloud.png",
     features: [
@@ -53,7 +53,7 @@ export const services: Service[] = [
     id: "devops",
     title: "DevOps Platform",
     description:
-      "Automate development processes with a DevOps toolchain. Free up Developers to engage in higher value, business-critical decisions.",
+      "Automate software development with a complete DevOps toolchain, freeing developers for critical tasks.",
     image:
       "https://www.virtuosity-global.com/wp-content/uploads/2022/04/sam_devops.png",
     features: [
@@ -67,7 +67,7 @@ export const services: Service[] = [
       { name: "Jenkins", url: "https://www.jenkins.io/" },
       { name: "Terraform", url: "https://www.terraform.io/" },
       { name: "Ansible", url: "https://www.ansible.com/" },
-      { name: "Jira Software", url: "https://www.atlassian.com/software/jira" },
+      { name: "Jira", url: "https://www.atlassian.com/software/jira" },
       { name: "HashiCorp Vault", url: "https://www.vaultproject.io" },
       {
         name: "fluentbit",
@@ -100,7 +100,7 @@ export const services: Service[] = [
     id: "microservices",
     title: "Cloud Native Applications",
     description:
-      "Build modern applications with Microservices Architecture - obtain quicker deployment response to changing market demand.",
+      "Build modern applications with microservices for faster deployment and market adaptability.",
     image:
       "https://www.virtuosity-global.com/wp-content/uploads/2022/04/sam_microservices-1.png",
     features: [
@@ -128,7 +128,7 @@ export const services: Service[] = [
     id: "ai",
     title: "AI Driven Business Productivity",
     description:
-      "Jumpstart your AI journey with a Private Secure, Multi-lingual AI Assistant, with Proven Productivity Solution.",
+      "Enhance productivity with secure, multi-lingual AI assistants and private AI deployments.",
     image: "https://i.ibb.co/nNxbn340/ai-tools-logo.png",
     features: [
       "Private AI deployments",
