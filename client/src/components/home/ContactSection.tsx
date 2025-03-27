@@ -235,7 +235,7 @@ const ContactSection = () => {
                 className="w-full h-72"
               >
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1141834612635!2d101.53735297487697!3d3.067926153587076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4d7c4808727d%3A0xf4ece0183b6c4cd8!2sVirtuosity%20Solutions%20Sdn.%20Bhd.!5e0!3m2!1sen!2sus!4v1709106381299!5m2!1sen!2sus" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.272602157202!2d101.54638!3d3.0212752000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb2b8b938432b%3A0xb9098e79fd9c3f99!2sVirtuosity%20Solutions%20Sdn.%20Bhd.!5e0!3m2!1sen!2smy!4v1742982799348!5m2!1sen!2smy"
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
