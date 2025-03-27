@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Calendar, User, Tag } from "lucide-react";
+import { useEffect } from "react";
 
 const BlogPost = () => {
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -36,7 +41,7 @@ const BlogPost = () => {
         >
           <div className="relative">
             <motion.img 
-              src="https://i.ibb.co/jvYLVQmq/image-2025-03-27-142713360.png"
+              src="https://i.imghippo.com/files/oeF5911RXI.png"
               alt="Virtuosity Global and Ren3 Partnership" 
               className="w-full h-64 object-cover object-center"
               initial={{ opacity: 0, scale: 1.1 }}

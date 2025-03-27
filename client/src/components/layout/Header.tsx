@@ -27,7 +27,14 @@ const Header = () => {
     { name: "Blog", path: "https://www.pivotal.my", external: true }
   ];
 
-  const isActive = (path: string) => location.includes(path.replace("#", ""));
+  const isActive = (path: string) => {
+    // For hash links in the home page
+    if (path.includes('#')) {
+      return location.includes(path.replace("#", ""));
+    }
+    // For regular paths, we need exact matching
+    return path === "/" ? location === "/" : location === path;
+  };
 
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string, isExternal?: boolean) => {
     if (isExternal) {

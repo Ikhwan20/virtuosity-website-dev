@@ -2,8 +2,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Cloud, Shield, Zap, Globe, Cpu, Database, Layers } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
+import { useEffect } from "react";
 
 const Products = () => {
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -39,7 +44,7 @@ const Products = () => {
           >
             <motion.div variants={item} className="flex justify-center mb-10">
               <motion.img 
-                src="https://i.ibb.co/jvYLVQmq/image-2025-03-27-142713360.png" 
+                src="https://i.imghippo.com/files/oeF5911RXI.png" 
                 alt="Ren3 AI Logo" 
                 className="h-20 md:h-24 w-auto"
                 initial={{ opacity: 0 }}
@@ -243,7 +248,7 @@ const Products = () => {
               <div className="relative w-full max-w-md h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl overflow-hidden shadow-lg">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img 
-                    src="https://i.ibb.co/jvYLVQmq/image-2025-03-27-142713360.png" 
+                    src="https://i.imghippo.com/files/oeF5911RXI.png" 
                     alt="Ren3 AI Integration" 
                     className="w-32 absolute opacity-10"
                   />

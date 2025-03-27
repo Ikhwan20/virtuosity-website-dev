@@ -38,7 +38,7 @@ const Hero = () => {
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
+      x: direction > 0 ? '30%' : '-30%',
       opacity: 0
     }),
     center: {
@@ -46,14 +46,14 @@ const Hero = () => {
       opacity: 1
     },
     exit: (direction: number) => ({
-      x: direction < 0 ? '100%' : '-100%',
+      x: direction < 0 ? '30%' : '-30%',
       opacity: 0
     })
   };
 
   const slideTransition = {
-    duration: 0.8,
-    ease: [0.4, 0.0, 0.2, 1]
+    duration: 0.5,
+    ease: [0.25, 0.1, 0.25, 1.0] // Use cubic-bezier for smoother transition
   };
 
   // Original hero content
