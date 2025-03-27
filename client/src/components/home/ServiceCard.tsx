@@ -11,11 +11,44 @@ interface ServiceCardProps {
   index?: number;
 }
 
+// Technology logo mapping (for commonly used technologies)
+const techLogoMap: Record<string, string> = {
+  "Kubernetes": "/assets/logos/kubernetes.svg",
+  "VMware": "/assets/logos/vmware.svg",
+  "OpenShift": "/assets/logos/openshift.svg",
+  "Alibaba Cloud": "/assets/logos/alibabacloud.svg",
+  "Rancher": "/assets/logos/rancher.svg",
+  "Azure": "/assets/logos/azure.svg",
+  "Red Hat": "/assets/logos/redhat.svg",
+  "GitLab": "/assets/logos/gitlab.svg",
+  "Jenkins": "/assets/logos/jenkins.svg",
+  "Terraform": "/assets/logos/terraform.svg",
+  "Ansible": "/assets/logos/ansible.svg",
+  "Jira Software": "/assets/logos/jira.svg",
+  "HashiCorp Vault": "/assets/logos/vault.svg",
+  "Docker": "/assets/logos/docker.svg",
+  "Harbor": "/assets/logos/harbor.svg",
+  "Grafana": "/assets/logos/grafana.svg",
+  "Kafka": "/assets/logos/kafka.svg",
+  "Redis": "/assets/logos/redis.svg",
+  "ReN3.ai": "https://i.imghippo.com/files/oeF5911RXI.png",
+  "OpenAI": "/assets/logos/openai.svg",
+  "DeepSeek": "/assets/logos/deepseek.svg",
+  "Claude": "/assets/logos/claude.svg",
+  "Mistral": "/assets/logos/mistral.svg",
+  "Llama": "/assets/logos/llama.svg",
+};
+
 const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleDetails = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  // Function to create a placeholder logo for technologies without a specific logo
+  const getLogoUrl = (techName: string) => {
+    return techLogoMap[techName] || null;
   };
 
   return (
@@ -49,28 +82,74 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
             {service.description}
           </motion.p>
           
-          <motion.div 
-            className="w-full h-48 flex justify-center items-center mb-4"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-          >
-            {service.id === "ai" ? (
-              <div className="w-full h-full flex items-center justify-center">
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-            ) : (
+          {/* Display tech logos if available instead of the single image */}
+          {service.technologies ? (
+            <motion.div 
+              className="w-full h-48 flex justify-center items-center mb-4 flex-wrap gap-4"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+            >
+              {service.technologies.slice(0, 6).map((tech, i) => (
+                <motion.a
+                  key={i}
+                  href={tech.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-20 h-20 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1, duration: 0.3 }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <div className="flex flex-col items-center justify-center h-full">
+                    {getLogoUrl(tech.name) ? (
+                      <img 
+                        src={getLogoUrl(tech.name)} 
+                        alt={tech.name} 
+                        className="w-10 h-10 object-contain mb-1"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-1">
+                        {tech.name.charAt(0)}
+                      </div>
+                    )}
+                    <span className="text-xs text-center font-medium text-gray-700 line-clamp-1">
+                      {tech.name}
+                    </span>
+                  </div>
+                </motion.a>
+              ))}
+              {service.technologies.length > 6 && (
+                <motion.div
+                  className="flex items-center justify-center w-20 h-20"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.3 }}
+                >
+                  <Badge 
+                    variant="outline" 
+                    className="bg-white border-primary/20 text-primary px-2 py-1"
+                  >
+                    +{service.technologies.length - 6} more
+                  </Badge>
+                </motion.div>
+              )}
+            </motion.div>
+          ) : (
+            <motion.div 
+              className="w-full h-48 flex justify-center items-center mb-4"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+            >
               <img 
                 src={service.image} 
                 alt={service.title} 
                 className="max-w-full max-h-full object-contain"
               />
-            )}
-          </motion.div>
+            </motion.div>
+          )}
           
           <motion.div
             whileTap={{ scale: 0.95 }}
@@ -116,31 +195,34 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
                 </ul>
                 
                 {service.technologies && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {service.technologies.map((tech, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.05, duration: 0.3 }}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <a 
-                          href={tech.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="inline-block"
+                  <div>
+                    <h4 className="font-montserrat font-bold mb-2">Technologies:</h4>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {service.technologies.map((tech, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: i * 0.05, duration: 0.3 }}
+                          whileHover={{ scale: 1.05 }}
                         >
-                          <Badge 
-                            variant="outline" 
-                            className="bg-white border-primary/20 text-primary hover:bg-primary/5 transition-colors duration-200 rounded-full px-3 py-1 text-sm flex items-center gap-1"
+                          <a 
+                            href={tech.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="inline-block"
                           >
-                            {tech.name}
-                            <ExternalLink size={12} className="ml-1" />
-                          </Badge>
-                        </a>
-                      </motion.div>
-                    ))}
+                            <Badge 
+                              variant="outline" 
+                              className="bg-white border-primary/20 text-primary hover:bg-primary/5 transition-colors duration-200 rounded-full px-3 py-1 text-sm flex items-center gap-1"
+                            >
+                              {tech.name}
+                              <ExternalLink size={12} className="ml-1" />
+                            </Badge>
+                          </a>
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
                 )}
                 

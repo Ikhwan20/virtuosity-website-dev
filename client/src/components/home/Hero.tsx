@@ -110,7 +110,7 @@ const Hero = () => {
         >
           <div className="inline-flex items-center gap-5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
             <img
-              src="https://i.imghippo.com/files/oeF5911RXI.png"
+              src="https://i.imghippo.com/files/kRE5838d.png"
               alt="Ren3 AI Logo"
               className="h-10 w-auto"
             />
@@ -131,7 +131,7 @@ const Hero = () => {
           initial="hidden"
           animate="show"
         >
-          Virtuosity Global is now partnering with Ren3 to bring advanced AI
+          Virtuosity Solutions is now partnering with ReN3 to bring advanced AI
           solutions to businesses worldwide.
         </motion.p>
         <motion.div
