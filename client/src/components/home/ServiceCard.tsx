@@ -173,7 +173,7 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
           >
-            <h4 className="text-sm font-medium text-gray-500 mb-3">Powered By:</h4>
+            
             <div className="flex justify-center items-center h-32 overflow-hidden rounded-lg bg-gray-50/50 p-2">
               <motion.img
                 src={service.image}
@@ -232,7 +232,7 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
             transition={{ duration: 0.4, delay: 0.6 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Button
+            {/*<Button
               variant="ghost"
               className="w-full justify-between text-primary hover:text-primary/90 hover:bg-primary/5 px-4 py-2 h-auto font-medium"
               onClick={toggleDetails}
@@ -248,7 +248,7 @@ const ServiceCard = ({ service, index = 0 }: ServiceCardProps) => {
                   <ArrowRight size={18} />
                 )}
               </motion.div>
-            </Button>
+            </Button>*/}
           </motion.div>
         </CardContent>
 

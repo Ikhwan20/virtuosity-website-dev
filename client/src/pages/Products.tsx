@@ -112,7 +112,7 @@ const Products = () => {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Why Ren3 AI?"
-            description="Discover how Ren3 AI can revolutionize your business operations with cutting-edge artificial intelligence technology."
+            description="Discover how Ren3 AI can revolutionize your business operations with advanced artificial intelligence technology."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">

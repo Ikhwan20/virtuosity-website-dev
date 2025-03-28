@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 
 const Hero = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  
+
   // Auto rotate between slides
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev === 0 ? 1 : 0));
     }, 8000); // Change slide every 8 seconds
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -30,12 +30,12 @@ const Hero = () => {
   const slideVariants = {
     enter: { opacity: 0 },
     center: { opacity: 1 },
-    exit: { opacity: 0 }
+    exit: { opacity: 0 },
   };
 
   const slideTransition = {
-    duration: 0.4,
-    ease: "easeInOut"
+    duration: 0.3,
+    ease: "easeInOut",
   };
 
   // Original hero content
@@ -45,12 +45,12 @@ const Hero = () => {
       key="cloud-hero"
       variants={slideVariants}
       initial="enter"
-      animate="center" 
+      animate="center"
       exit="exit"
       transition={slideTransition}
     >
       <div className="max-w-3xl mx-auto text-center">
-        <motion.h1 
+        <motion.h1
           className="text-4xl md:text-5xl font-montserrat font-bold mb-6"
           variants={item}
           initial="hidden"
@@ -58,15 +58,16 @@ const Hero = () => {
         >
           Get Cloud Right. Be Cloud Native.
         </motion.h1>
-        <motion.p 
+        <motion.p
           className="text-xl font-light mb-10"
           variants={item}
           initial="hidden"
           animate="show"
         >
-          Accelerate your business with enterprise-grade cloud infrastructure, DevOps automation, and AI-driven solutions.
+          Accelerate your business with enterprise-grade cloud infrastructure,
+          DevOps automation, and AI-driven solutions.
         </motion.p>
-        <motion.div 
+        {/*<motion.div 
           variants={item}
           initial="hidden"
           animate="show"
@@ -85,7 +86,7 @@ const Hero = () => {
               Consult With Us
             </motion.a>
           </Button>
-        </motion.div>
+        </motion.div>*/}
       </div>
     </motion.div>
   );
@@ -97,13 +98,13 @@ const Hero = () => {
       key="ren3-hero"
       variants={slideVariants}
       initial="enter"
-      animate="center" 
+      animate="center"
       exit="exit"
       transition={slideTransition}
     >
       <div className="max-w-3xl mx-auto text-center">
-        <motion.div 
-          className="flex justify-center mb-6" 
+        <motion.div
+          className="flex justify-center mb-6"
           variants={item}
           initial="hidden"
           animate="show"
@@ -114,7 +115,9 @@ const Hero = () => {
               alt="Ren3 AI Logo"
               className="h-10 w-auto"
             />
-            <span className="text-sm font-medium">New Partnership Announcement</span>
+            <span className="text-sm font-medium">
+              New Partnership Announcement
+            </span>
           </div>
         </motion.div>
         <motion.h1
@@ -125,8 +128,8 @@ const Hero = () => {
         >
           Unlock AI-Powered Solutions with Our Latest Partnership
         </motion.h1>
-        <motion.p 
-          className="text-xl font-light mb-10" 
+        <motion.p
+          className="text-xl font-light mb-10"
           variants={item}
           initial="hidden"
           animate="show"
@@ -154,7 +157,7 @@ const Hero = () => {
               Discover More
             </motion.a>
           </Button>
-          <Button
+          {/*<Button
             size="lg"
             className="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-8 rounded-md shadow-lg transition duration-300"
             asChild
@@ -166,7 +169,7 @@ const Hero = () => {
             >
               Request a Demo
             </motion.a>
-          </Button>
+          </Button> */}
         </motion.div>
       </div>
     </motion.div>
@@ -178,16 +181,16 @@ const Hero = () => {
         <AnimatePresence initial={false} mode="wait">
           {activeSlide === 0 ? cloudHero : ren3Hero}
         </AnimatePresence>
-        
+
         {/* Slide indicators */}
         <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-2">
           <button
-            className={`w-3 h-3 rounded-full ${activeSlide === 0 ? 'bg-white' : 'bg-white/40'}`}
+            className={`w-3 h-3 rounded-full ${activeSlide === 0 ? "bg-white" : "bg-white/40"}`}
             onClick={() => setActiveSlide(0)}
             aria-label="Show cloud hero"
           />
           <button
-            className={`w-3 h-3 rounded-full ${activeSlide === 1 ? 'bg-white' : 'bg-white/40'}`}
+            className={`w-3 h-3 rounded-full ${activeSlide === 1 ? "bg-white" : "bg-white/40"}`}
             onClick={() => setActiveSlide(1)}
             aria-label="Show Ren3 partnership hero"
           />
